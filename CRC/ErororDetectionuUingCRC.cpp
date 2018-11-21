@@ -19,3 +19,15 @@ string alter(string frame) {
 	}
 	return frame;
 }
+
+
+void ErororDetectionuUingCRC::set() {
+	cout << "Enter the frame to be sent: ";
+	cin >> frame;
+	frameSize = frame.length();
+	cout << "Enter the generator bits: ";
+	cin >> generator;
+	generatorSize = generator.length();
+	cout << "The original message is: " << frame << endl;
+	cout << "The generator bits are: " << generator << endl;
+}
