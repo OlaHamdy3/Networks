@@ -1,3 +1,5 @@
+#include "ErororDetectionuUingCRC.h"
+
 string alter(string frame) {
 	cout << "Do you wish to flip a bit? (Y|N)" << endl;
 	char c;
