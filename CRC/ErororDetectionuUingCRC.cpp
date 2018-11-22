@@ -139,3 +139,14 @@ string ErororDetectionuUingCRC::CalculationOfCRC() {
 	cout << "The remainder is: " << remainderOfCRC << endl;
 	return finalFrame;
 }
+
+void ErororDetectionuUingCRC::verify(string newFrame) {
+	frame = newFrame;
+	CalculationOfCRC();
+	if (stoi(rOfCrc) == 0) {
+		cout << "No error occured while transmitting the frame." << endl;
+	}
+	else {
+		cout << "An error occured while transmitting the frame." << endl;
+	}
+}
