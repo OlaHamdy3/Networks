@@ -1,4 +1,5 @@
 #include "ErororDetectionuUingCRC.h"
+string alter(string frame) ;
 int main(void) {
 	ErororDetectionuUingCRC c;
 	c.set();
