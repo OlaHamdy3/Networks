@@ -9,9 +9,11 @@ private:
 	int frameSize, generatorSize, operationOutputSize, remainderSize;
 	string frame;
 	string generator;
+	string rOfCrc;
 
 public:
 	void set();
 	string CalculationOfCRC();
+	void verify(string newFrame);
 
 };
