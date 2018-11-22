@@ -1,7 +1,7 @@
 #include "ErororDetectionuUingCRC.h"
 
 string alter(string frame) {
-	cout << "Do you wish to flip a bit? (Y|N)" << endl;
+	cout << "Do you wish to flip a bit? (Y|N)" << endl; /*Can be Y, y, N, or n.*/
 	char c;
 	cin >> c;
 	if (c == 'Y' || c == 'y') {
@@ -34,14 +34,12 @@ void ErororDetectionuUingCRC::set() {
 
 string ErororDetectionuUingCRC::CalculationOfCRC() {
 	int n = 0, m = 0, flag = 0, k = 0, count = 0;
+	/*Generating the frame with zero appended to use it for the remainder calculations.*/
 	string frameWithZerosAppended = frame;
-	//if (frame.length()= generatorSize + frameSize)
-	//{
 		for (int i = 0; i < generatorSize - 1; i++) {
 			frameWithZerosAppended += '0';
 		}
-	//}
-	
+	/*Convirting the string frame with zero appended to integer.*/
 	int* message = new int[frameSize + generatorSize - 1];
 	for (int i = 0; i < frameSize+generatorSize; i++) {
 		if (frameWithZerosAppended[i] == '1') {
@@ -51,6 +49,7 @@ string ErororDetectionuUingCRC::CalculationOfCRC() {
 			message[i] = 0;
 		}
 	}
+	/*Convirting the string generator bits to integer.*/
 	int* divisor = new int[generatorSize];
 	for (int i = 0; i < generator.length(); i++) {
 		if (generator[i] == '1') {
@@ -60,6 +59,7 @@ string ErororDetectionuUingCRC::CalculationOfCRC() {
 			divisor[i] = 0;
 		}
 	}
+	/*Calculating the remainder.*/
 	frameSize = (frameSize + generatorSize) - 1;
 	remainderSize = frameSize;
 	int* remainder = new int[remainderSize];
@@ -125,6 +125,7 @@ string ErororDetectionuUingCRC::CalculationOfCRC() {
 		else
 			remainderOfCRC += '1';
 	}
+	/*Convering the integer array remainder to string.*/
 	string finalFrame = "";
 	for (int i = 0; i < frameSize; i++) {
 		if (message[i] == 0) {
@@ -134,16 +135,18 @@ string ErororDetectionuUingCRC::CalculationOfCRC() {
 			finalFrame += '1';
 		}
 	}
+	/*Printing all outputs.*/
 	rOfCrc = remainderOfCRC;
 	cout << "The frame with zeros appended used to calculate the CRC remainder is: " << frameWithZerosAppended << endl;
 	cout << "The remainder is: " << remainderOfCRC << endl;
+	/*Return value.*/
 	return finalFrame;
 }
 
 void ErororDetectionuUingCRC::verify(string newFrame) {
-	frame = newFrame;
-	CalculationOfCRC();
-	if (stoi(rOfCrc) == 0) {
+	frame = newFrame; /*Frame to be tested.*/
+	CalculationOfCRC(); /*Getting the remainder*/
+	if (stoi(rOfCrc) == 0) { /*Verify*/
 		cout << "No error occured while transmitting the frame." << endl;
 	}
 	else {

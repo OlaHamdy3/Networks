@@ -12,8 +12,8 @@ private:
 	string rOfCrc;
 
 public:
-	void set();
-	string CalculationOfCRC();
-	void verify(string newFrame);
+	void set(); /*Sets the values of Frame bits.*/
+	string CalculationOfCRC(); /*Calculates the remainder and returns the frame to be sent.*/
+	void verify(string newFrame); /*Checks whether a transmitted frame is correct or not.*/
 
 };
