@@ -1,16 +1,17 @@
+//#pragma once
 #include <iostream>
 #include <string>
 using namespace std;
 
-string alter(string frame);
 class ErororDetectionuUingCRC
 {
-  private:
-  int frameSize, generatorSize;
-  string frame;
+private:
+	int frameSize, generatorSize, operationOutputSize, remainderSize;
+	string frame;
 	string generator;
-  public:
-  void set();
+
+public:
+	void set();
+	string CalculationOfCRC();
 
 };
-
